@@ -5,7 +5,7 @@
 </div>
 <div id="content">
   <div id="intro">
-    <h2>Face Recognition Attendance System</h2><h3>(Backend)</h3>
+    <h2>Face Recognition Attendance System</h2><h3>(Flutter Front-end)</h3>
     <p>Face Recognition Attendance System is a project build for the sole purpose of optimizing the attendance system of schools/colleges.</p>
     <p>Pbl_project_app is the frontend of the project implemented using Flutter. It uses Face-api.js for processing the image.The project aims to irradicate the process of roll-call based attendance. </p>
     <p>The project has multiple front-ends</p>
