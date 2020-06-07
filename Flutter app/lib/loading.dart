@@ -10,24 +10,23 @@ class _LoadingState extends State<Loading> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-          child: Scaffold(
-        backgroundColor: Colors.white,
-        body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-                CircleAvatar(
-          backgroundImage: AssetImage('images/agnel.jpg'),
-          radius: 80.0,
-        ),
-        SizedBox(height: 20,),
-        SpinKitThreeBounce(
-          color: Colors.blue,
-          size: 100,
-        )
-              
-              
-            ],
+      child: Scaffold(
+        body: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Image.asset('images/agnel.jpg'),
+                SizedBox(
+                  height: 20,
+                ),
+                SpinKitThreeBounce(
+                  color: Colors.blue,
+                  size: 40,
+                )
+              ],
+            ),
           ),
         ),
       ),

@@ -33,6 +33,12 @@ dependencies:
   flutter_spinkit:
   curved_navigation_bar:
   http:
+  firebase_auth:
+  cloud_firestore:
+  firebase_storage:
+  
+  
+  
 
 dev_dependencies:
   flutter_test:

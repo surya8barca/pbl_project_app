@@ -54,10 +54,17 @@ class Background extends StatelessWidget {
             Center(
       child: CircleAvatar(
         backgroundImage: AssetImage('images/agnel.jpg'),
-        radius: 80.0,
+        radius: 80,
       ),
             ),
             SizedBox(height: 15.0,),
+            Divider(
+                      height: 5.0,
+                      thickness: 2.0,
+                      color: Colors.blueAccent,
+                      indent: 30.0,
+                      endIndent: 30.0,
+                    ),
             ],
     );
   }
