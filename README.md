@@ -2,9 +2,6 @@
 
 <div id="topbar">
   <li id="nametopbar">Face Recognition Attendance System</li>
-  <ul id="topmenu">
-    <a href="#intro"><li>About</li></a>
-  </ul>
 </div>
 <div id="content">
   <div id="intro">
