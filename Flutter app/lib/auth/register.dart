@@ -5,7 +5,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:http/http.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:pbl_project_app/auth/login.dart';
 import 'package:pbl_project_app/shared/background.dart';
@@ -18,6 +17,7 @@ class Register extends StatefulWidget {
 }
 
 class _HomeState extends State<Register> {
+  //variables
   String userID;
   String formDob = "Date of Birth";
   String imagestatus = 'Upload your picture';
@@ -31,6 +31,7 @@ class _HomeState extends State<Register> {
       teacherform = false,
       imageform = false;
   List user = ['Teacher', 'Student'];
+  List branches=['Computer','Info. Tech','Electronics','Production','Mechanical'];
 
   final CollectionReference teachers= Firestore.instance.collection('Teachers');
   final CollectionReference students= Firestore.instance.collection('Students');
@@ -194,7 +195,7 @@ class _HomeState extends State<Register> {
                         ),
                         SizedBox(height: 20),
                         TextFormField(
-                          textInputAction: TextInputAction.next,
+                          textInputAction: TextInputAction.done,
                           obscureText: hidepassword,
                           decoration: fieldDecoration.copyWith(
                             labelText: 'Password',
@@ -525,25 +526,69 @@ class _HomeState extends State<Register> {
                         SizedBox(
                           height: 20,
                         ),
-                        TextFormField(
-                          textInputAction: TextInputAction.next,
-                          decoration: fieldDecoration.copyWith(
-                            labelText: 'Branch',
+                        Container(
+                            padding: EdgeInsets.all(5),
+                            decoration: BoxDecoration(
+                              border: Border.all(color: Colors.blue,width: 2,),
+                              borderRadius: BorderRadius.circular(30),
+                              color: Colors.white
+                            ),
+                            child: DropdownButton(
+                              iconEnabledColor: Colors.blue,
+                              underline: Container(),
+                              hint: Text(
+                                'Select your Branch:',
+                                style: TextStyle(
+                                  fontSize: 25,
+                                  color: Colors.blue,
+                                ),
+                              ),
+                              isExpanded: true,
+                              items:
+                                  branches.map<DropdownMenuItem<String>>((value) {
+                                return DropdownMenuItem<String>(
+                                  child: Container(
+                                    padding: EdgeInsets.all(5),
+                                    height: 60,
+                                    width: MediaQuery.of(context).size.width,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(30),
+                                      color: Colors.white
+                                    ),
+                                    child: Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: <Widget>[
+                                        Text(
+                                          value,
+                                          textAlign: TextAlign.center,
+                                          style: TextStyle(
+                                            fontSize: 25,
+                                            fontWeight: FontWeight.bold,
+                                            color: Colors.blue,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  value: value,
+                                );
+                              }).toList(),
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontWeight: FontWeight.bold,
+                              ),
+                              onChanged: (chosen) {
+                                setState(() {
+                                  branch= chosen;
+                                });
+                              },
+                              value: branch,
+                            ),
                           ),
-                          style: TextStyle(color: Colors.blue, fontSize: 20),
-                          onChanged: (value) {
-                            if (value != null) {
-                              setState(() {
-                                branch = value;
-                              });
-                            }
-                          },
-                          onFieldSubmitted: (value) =>
-                              FocusScope.of(context).unfocus(),
-                        ),
-                        SizedBox(
-                          height: 20,
-                        ),
+                          SizedBox(
+                            height: 20,
+                          ),
                         ButtonTheme(
                           shape: RoundedRectangleBorder(
                               borderRadius: new BorderRadius.circular(30)),
@@ -727,27 +772,71 @@ class _HomeState extends State<Register> {
                             }
                           },
                           onFieldSubmitted: (value) =>
-                              FocusScope.of(context).unfocus(),
+                              FocusScope.of(context).nextFocus(),
                         ),
                         SizedBox(
                           height: 20,
                         ),
-                        TextFormField(
-                          textInputAction: TextInputAction.next,
-                          decoration: fieldDecoration.copyWith(
-                            labelText: 'Branch',
+                        Container(
+                            padding: EdgeInsets.all(5),
+                            decoration: BoxDecoration(
+                              border: Border.all(color: Colors.blue,width: 2,),
+                              borderRadius: BorderRadius.circular(30),
+                              color: Colors.white
+                            ),
+                            child: DropdownButton(
+                              iconEnabledColor: Colors.blue,
+                              underline: Container(),
+                              hint: Text(
+                                'Select your Branch:',
+                                style: TextStyle(
+                                  fontSize: 25,
+                                  color: Colors.blue,
+                                ),
+                              ),
+                              isExpanded: true,
+                              items:
+                                  branches.map<DropdownMenuItem<String>>((value) {
+                                return DropdownMenuItem<String>(
+                                  child: Container(
+                                    padding: EdgeInsets.all(5),
+                                    height: 60,
+                                    width: MediaQuery.of(context).size.width,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(30),
+                                      color: Colors.white
+                                    ),
+                                    child: Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: <Widget>[
+                                        Text(
+                                          value,
+                                          textAlign: TextAlign.center,
+                                          style: TextStyle(
+                                            fontSize: 25,
+                                            fontWeight: FontWeight.bold,
+                                            color: Colors.blue,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  value: value,
+                                );
+                              }).toList(),
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontWeight: FontWeight.bold,
+                              ),
+                              onChanged: (chosen) {
+                                setState(() {
+                                  branch= chosen;
+                                });
+                              },
+                              value: branch,
+                            ),
                           ),
-                          style: TextStyle(color: Colors.blue, fontSize: 20),
-                          onChanged: (value) {
-                            if (value != null) {
-                              setState(() {
-                                branch = value;
-                              });
-                            }
-                          },
-                          onFieldSubmitted: (value) =>
-                              FocusScope.of(context).unfocus(),
-                        ),
                         SizedBox(
                           height: 20,
                         ),
