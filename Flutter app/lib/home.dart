@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:pbl_project_app/auth/login.dart';
-import 'package:pbl_project_app/auth/register.dart';
+import 'package:hive/hive.dart';
+import 'package:pbl_project_app/Hive/userdata.dart';
 import 'package:pbl_project_app/loading.dart';
-import 'shared/background.dart';
+import 'package:pbl_project_app/user/userhome.dart';
+import 'firstpage.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -10,9 +11,32 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  bool start = false;
+  //variables
+  bool start = false,usersaved;
+  String userid,usertype;
+  final userbox = Hive.box('currentuser');
+
+  //functions
+  Future<void> getdata()async{
+    if(userbox.length==0)
+    {
+      setState(() {
+        usersaved=false;
+      });
+    }
+    else
+    {
+      Userinfo user=await userbox.getAt(0) as Userinfo;
+      setState(() {
+        userid=user.userid;
+        usertype=user.usertype;
+        usersaved=true;
+      });
+    }
+  }
 
   Future<void> first() async {
+    await getdata();
     await Future.delayed(Duration(seconds: 3));
     setState(() {
       start = true;
@@ -30,113 +54,16 @@ class _HomeState extends State<Home> {
     if (start == false) {
       return Loading();
     } else {
-      return Scaffold(
-        appBar: AppBar(
-          backgroundColor: Colors.blueGrey,
-          centerTitle: true,
-          title: Text(
-            'Attendance System',
-            style: TextStyle(
-              fontSize: 28.0,
-              color: Colors.black,
-            ),
-          ),
-        ),
-        body: Builder(
-          builder: (context) => SingleChildScrollView(
-            child: Container(
-              child: Container(
-                child: Column(
-                  children: [
-                    Background(),
-                    SizedBox(
-                      height: 15.0,
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Text(
-                        'Attendance System Using Face Detection',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          color: Colors.blue,
-                          fontSize: 25.0,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ),
-                    SizedBox(
-                      height: 15.0,
-                    ),
-                    Divider(
-                      height: 5.0,
-                      thickness: 2.0,
-                      color: Colors.blueAccent,
-                      indent: 30.0,
-                      endIndent: 30.0,
-                    ),
-                    SizedBox(
-                      height: 30.0,
-                    ),
-                    ButtonTheme(
-                      shape: RoundedRectangleBorder(
-                          borderRadius: new BorderRadius.circular(30)),
-                      minWidth: 150,
-                      height: 60,
-                      buttonColor: Colors.cyan,
-                      child: RaisedButton(
-                        onPressed: () {
-                          Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Login(),));
-                        },
-                        child: Text(
-                          'Login',
-                          style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 30.0,
-                          ),
-                        ),
-                      ),
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    ButtonTheme(
-                      shape: RoundedRectangleBorder(
-                          borderRadius: new BorderRadius.circular(30)),
-                      minWidth: 150,
-                      height: 60,
-                      buttonColor: Colors.blue,
-                      child: RaisedButton(
-                        onPressed: () {
-                          Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Register(),));
-                        },
-                        child: Text(
-                          'Register',
-                          style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 30.0,
-                          ),
-                        ),
-                      ),
-                    ),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    Text(
-                      'Developed By: Carol Sebastian, Surya Partap and Kevin Ruffin (TE Comps)',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 10.0,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          ),
-        ),
-      );
+      if(usersaved)
+      {
+        return UserHome(userid: userid,usertype: usertype);
+      }
+      else
+      {
+        return Firstpage();
+      }
+      
     }
   }
 }
+

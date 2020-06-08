@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:hive/hive.dart';
+import 'package:pbl_project_app/Hive/userdata.dart';
 import 'package:pbl_project_app/auth/register.dart';
 import 'package:pbl_project_app/shared/background.dart';
 import 'package:pbl_project_app/shared/form_decoration.dart';
@@ -16,17 +17,21 @@ class Login extends StatefulWidget {
 
 class _HomeState extends State<Login> {
   //variables
-  String email,password;
-  bool hidepassword=true,rememberme=true;
+  String email,password,userid,usertype;
+  List user = ['Teacher', 'Student'];
+  bool hidepassword=true,rememberme=false;
   final userbox =Hive.box('currentuser');
 
   //functions
   Future<bool> login() async{
     try{
       AuthResult result=await FirebaseAuth.instance.signInWithEmailAndPassword(email: email, password: password);
+      setState(() {
+        userid=result.user.uid;
+      });
       if(rememberme)
       {
-        await userbox.add(result.user.uid);
+        await userbox.add(Userinfo(userid:userid,usertype: usertype));
       }
       return true;
     }
@@ -34,7 +39,7 @@ class _HomeState extends State<Login> {
       Navigator.pop(context);
       Alert(
           context: context,
-          title: 'Database Error',
+          title: 'Login Error',
           desc: e.message,
           buttons: []).show();
       return false;
@@ -94,7 +99,7 @@ class _HomeState extends State<Login> {
                           onFieldSubmitted: (value) =>
                               FocusScope.of(context).nextFocus(),
                         ),
-                        SizedBox(height: 20),
+                        SizedBox(height: 20,),
                         TextFormField(
                           textInputAction: TextInputAction.done,
                           obscureText: hidepassword,
@@ -127,6 +132,78 @@ class _HomeState extends State<Login> {
                           onFieldSubmitted: (value) =>
                               FocusScope.of(context).unfocus(),
                         ),
+                        SizedBox(height: 10),
+                        Text(
+                            'What type of User are you?',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                                fontSize: 25, fontWeight: FontWeight.bold),
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          Container(
+                            padding: EdgeInsets.all(5),
+                            decoration: BoxDecoration(
+                              border: Border.all(color: Colors.blue),
+                              borderRadius: BorderRadius.circular(30),
+                              color: Colors.white,
+                            ),
+                            child: DropdownButton(
+                              iconEnabledColor: Colors.black,
+                              underline: Container(),
+                              hint: Text(
+                                'Select User Type:',
+                                style: TextStyle(
+                                  fontSize: 25,
+                                  color: Colors.blue,
+                                ),
+                              ),
+                              isExpanded: true,
+                              items:
+                                  user.map<DropdownMenuItem<String>>((value) {
+                                return DropdownMenuItem<String>(
+                                  child: Container(
+                                    padding: EdgeInsets.all(5),
+                                    height: 60,
+                                    width: MediaQuery.of(context).size.width,
+                                    decoration: BoxDecoration(
+                                      border: Border.all(
+                                          color: Colors.white, width: 2),
+                                      borderRadius: BorderRadius.circular(30),
+                                      color: Colors.white,
+                                    ),
+                                    child: Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: <Widget>[
+                                        Text(
+                                          value,
+                                          textAlign: TextAlign.center,
+                                          style: TextStyle(
+                                            fontSize: 25,
+                                            fontWeight: FontWeight.bold,
+                                            color: Colors.blue,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  value: value,
+                                );
+                              }).toList(),
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontWeight: FontWeight.bold,
+                              ),
+                              onChanged: (chosen) {
+                                setState(() {
+                                  usertype = chosen;
+                                });
+                              },
+                              value: usertype,
+                            ),
+                          ),
                         Row(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: <Widget>[
@@ -158,7 +235,7 @@ class _HomeState extends State<Login> {
                           buttonColor: Colors.cyan,
                           child: RaisedButton(
                             onPressed: () async {
-                              if (email != null && password != null) {
+                              if (email != null && password != null && usertype!=null) {
                                 Alert(
                     context: context,
                     style: AlertStyle(
@@ -173,7 +250,7 @@ class _HomeState extends State<Login> {
                   ).show();
                   bool status = await login();
                   if(status){
-                    Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => UserHome()), (route) => false);
+                    Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => UserHome(userid: userid,usertype: usertype,)), (route) => false);
                   }
                               } else {
                                 Alert(
