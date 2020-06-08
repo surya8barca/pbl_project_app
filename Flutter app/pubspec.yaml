@@ -36,6 +36,9 @@ dependencies:
   firebase_auth:
   cloud_firestore:
   firebase_storage:
+  hive:
+  hive_flutter:
+  path_provider:
   
   
   

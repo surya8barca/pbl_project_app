@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pbl_project_app/auth/login.dart';
 import 'package:pbl_project_app/auth/register.dart';
 import 'package:pbl_project_app/loading.dart';
 import 'shared/background.dart';
@@ -12,7 +13,7 @@ class _HomeState extends State<Home> {
   bool start = false;
 
   Future<void> first() async {
-    await Future.delayed(Duration(seconds: 5));
+    await Future.delayed(Duration(seconds: 3));
     setState(() {
       start = true;
     });
@@ -83,7 +84,9 @@ class _HomeState extends State<Home> {
                       height: 60,
                       buttonColor: Colors.cyan,
                       child: RaisedButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Login(),));
+                        },
                         child: Text(
                           'Login',
                           style: TextStyle(

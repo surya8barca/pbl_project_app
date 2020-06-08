@@ -281,6 +281,60 @@ class _HomeState extends State<Register> {
                             ),
                           ),
                         ),
+                        SizedBox(
+                  height: 20,
+                ),
+                Divider(
+                      height: 5.0,
+                      thickness: 2.0,
+                      color: Colors.blueAccent,
+                      indent: 30.0,
+                      endIndent: 30.0,
+                    ),
+                SizedBox(
+                  height: 10,
+                ),
+                Text(
+                  'Already a user?',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    color: Colors.redAccent,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 20,
+                  ),
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                ButtonTheme(
+                          shape: RoundedRectangleBorder(
+                              borderRadius: new BorderRadius.circular(30)),
+                          minWidth: 150,
+                          height: 60,
+                          buttonColor: Colors.blue,
+                          child: RaisedButton(
+                            onPressed: (){
+                              Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Login(),));
+                            },
+                            child: Text(
+                              'Login',
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 30.0,
+                              ),
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                  height: 10,
+                ),
+                Divider(
+                      height: 5.0,
+                      thickness: 2.0,
+                      color: Colors.blueAccent,
+                      indent: 30.0,
+                      endIndent: 30.0,
+                    ),
                       ],
                     ),
                   ),
