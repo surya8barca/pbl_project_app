@@ -287,3 +287,54 @@ Semester,Branch,Subject Type,Subject Name
 8,Mechanical,Theory,Institute Level Optional Course II
 8,Mechanical,Practical,Design of Mechanical Systems
 8,Mechanical,Practical,Power Engineering
+3,Electronics & Computer Science,Theory,Applied Maths III
+3,Electronics & Computer Science,Theory,Electronic Devices
+3,Electronics & Computer Science,Theory,Digital Electronics
+3,Electronics & Computer Science,Theory,Data Structures and Algorithms
+3,Electronics & Computer Science,Theory,Database Management Systems
+3,Electronics & Computer Science,Practical,Electronic Devices Lab
+3,Electronics & Computer Science,Practical,Digital Electronics Lab
+3,Electronics & Computer Science,Practical,Data Structures and Algorithms Lab
+3,Electronics & Computer Science,Practical,Database Management systems lab
+3,Electronics & Computer Science,Practical,Skill-based Lab course: OOPM (C++ and Java)
+4,Electronics & Computer Science,Theory,Applied Maths IV
+4,Electronics & Computer Science,Theory,Electronic Circuits
+4,Electronics & Computer Science,Theory,Controls and Instrumentation
+4,Electronics & Computer Science,Theory,Microprocessors and Microcontrollers
+4,Electronics & Computer Science,Theory,Discrete structures and Automata Theory
+4,Electronics & Computer Science,Practical,Electronic Circuits Lab
+4,Electronics & Computer Science,Practical,Controls and Instrumentation Lab
+4,Electronics & Computer Science,Practical,Microprocessors and Microcontrollers Lab
+4,Electronics & Computer Science,Practical,Skill-based Lab Course: Python programming
+5,Electronics & Computer Science,Theory,Communication Engineering
+5,Electronics & Computer Science,Theory,Computer Organization and Architecture
+5,Electronics & Computer Science,Theory,Software Engineering
+5,Electronics & Computer Science,Theory,Web Technologies
+5,Electronics & Computer Science,Theory,Department Optional Course -I
+5,Electronics & Computer Science,Practical,Communication Engineering Lab
+5,Electronics & Computer Science,Practical,Software Engineering and Web Technologies Lab
+5,Electronics & Computer Science,Practical,Department Optional Course -I Lab
+5,Electronics & Computer Science,Practical,Business Communication and Ethics
+6,Electronics & Computer Science,Theory,Embedded Systems and RTOS
+6,Electronics & Computer Science,Theory,Artificial Intelligence
+6,Electronics & Computer Science,Theory,Computer Networks
+6,Electronics & Computer Science,Theory,Data Warehousing and Mining
+6,Electronics & Computer Science,Theory,Department-Level Optional Course -2
+6,Electronics & Computer Science,Practical,Embedded Systems Lab
+6,Electronics & Computer Science,Practical,Artificial Intelligence and Computer Networks Lab
+6,Electronics & Computer Science,Practical,Data Warehousing and Mining
+6,Electronics & Computer Science,Practical,Skill-based Lab :Department-Level Optional Course -2 Lab
+7,Electronics & Computer Science,Theory,VLSI Design
+7,Electronics & Computer Science,Theory,Internet of Things
+7,Electronics & Computer Science,Theory,Department Level Optional Course -3
+7,Electronics & Computer Science,Theory,Department Level Optional Course -4
+7,Electronics & Computer Science,Theory,Institute-Level Optional Course -1
+7,Electronics & Computer Science,Practical,VLSI Design Lab
+7,Electronics & Computer Science,Practical,Internet of Things Lab
+7,Electronics & Computer Science,Practical,Department Level Optional Course 3 lab
+8,Electronics & Computer Science,Theory,Robotics
+8,Electronics & Computer Science,Theory,Department Level Optional Course -5
+8,Electronics & Computer Science,Theory,Department Level Optional Course -6
+8,Electronics & Computer Science,Theory,Institute-Level Optional Course -2
+8,Electronics & Computer Science,Practical,Robotics Lab
+8,Electronics & Computer Science,Practical,Department Level Optional Course 5 lab

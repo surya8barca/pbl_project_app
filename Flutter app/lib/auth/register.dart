@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -5,6 +6,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:http/http.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:pbl_project_app/auth/login.dart';
 import 'package:pbl_project_app/shared/background.dart';
@@ -31,7 +33,7 @@ class _HomeState extends State<Register> {
       teacherform = false,
       imageform = false;
   List user = ['Teacher', 'Student'];
-  List branches=['Computer','Info. Tech','Electronics','Production','Mechanical'];
+  List branches=['Computer','Info. Tech','Electronics','Production','Mechanical','Electronics & Computer Science'];
 
   final CollectionReference teachers= Firestore.instance.collection('Teachers');
   final CollectionReference students= Firestore.instance.collection('Students');
@@ -78,11 +80,25 @@ class _HomeState extends State<Register> {
           buttons: []).show();
       return false;
     }
-
     }
 
 
+  Future<void> getsubjects() async{
+    try{
+      String url='https://musubjects.herokuapp.com/subjects/?Semester=$sem&Branch=$branch';
+      Response subjects = await get(url);
+      print(jsonDecode(subjects.body));
+
+    }
+    catch (e) {
+      print('error');
+      print(e.message);
+    }
+  }
+
+
   Future<bool> dataentryStudent() async{
+    await getsubjects();
     try{
       await students.document(userID).setData({
         'name':name,
@@ -91,6 +107,8 @@ class _HomeState extends State<Register> {
         'date_of_birth':dob,
         'branch':branch,
         'user_type':userType,
+        'total_attendance':0.00,
+
       });
       return true;
     }
