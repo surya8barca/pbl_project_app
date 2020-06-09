@@ -34,6 +34,8 @@ class _HomeState extends State<Register> {
       imageform = false;
   List user = ['Teacher', 'Student'];
   List branches=['Computer','Info. Tech','Electronics','Production','Mechanical','Electronics & Computer Science'];
+  List<Map> practicalSubjects=[];
+  List<Map> theorySubjects=[];
 
   final CollectionReference teachers= Firestore.instance.collection('Teachers');
   final CollectionReference students= Firestore.instance.collection('Students');
@@ -86,9 +88,31 @@ class _HomeState extends State<Register> {
   Future<void> getsubjects() async{
     try{
       String url='https://musubjects.herokuapp.com/subjects/?Semester=$sem&Branch=$branch';
-      Response subjects = await get(url);
-      print(jsonDecode(subjects.body));
-
+      Response data = await get(url);
+      Map subjects = jsonDecode(data.body);
+      List pracs=subjects['Practical Subjects'];
+      List theory = subjects['Theory Subjects'];
+      for(int i=0;i<pracs.length;i++)
+      {
+        Map data = {
+          "Subject_name":pracs[i],
+          "total_lectures":0,
+          "lectures_attended":0,
+          "subject_attendance":0.00,
+        };
+        practicalSubjects.add(data);
+      }
+      for(int i=0;i<theory.length;i++)
+      {
+        Map data = {
+          "Subject_name":theory[i],
+          "total_lectures":0,
+          "lectures_attended":0,
+          "subject_attendance":0.00,
+        };
+        theorySubjects.add(data);
+      }
+     
     }
     catch (e) {
       print('error');
@@ -108,7 +132,8 @@ class _HomeState extends State<Register> {
         'branch':branch,
         'user_type':userType,
         'total_attendance':0.00,
-
+        'Theory_Subjects':theorySubjects,
+        'Practical_Subjects':practicalSubjects,
       });
       return true;
     }
@@ -635,7 +660,7 @@ class _HomeState extends State<Register> {
                                           value,
                                           textAlign: TextAlign.center,
                                           style: TextStyle(
-                                            fontSize: 25,
+                                            fontSize: 15,
                                             fontWeight: FontWeight.bold,
                                             color: Colors.blue,
                                           ),
@@ -886,7 +911,7 @@ class _HomeState extends State<Register> {
                                           value,
                                           textAlign: TextAlign.center,
                                           style: TextStyle(
-                                            fontSize: 25,
+                                            fontSize: 15,
                                             fontWeight: FontWeight.bold,
                                             color: Colors.blue,
                                           ),
