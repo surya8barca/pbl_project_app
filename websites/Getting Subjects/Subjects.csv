@@ -1,0 +1,289 @@
+Semester,Branch,Subject Type,Subject Name
+,,,
+1,Common,Theory,Mathematics -1
+1,Common,Theory,Physics-1
+1,Common,Theory,Chemistry-1
+1,Common,Theory,Engineering Mechanics
+1,Common,Theory,Basic Electrical Engineering
+1,Common,Practical,Physics-1
+1,Common,Practical,Chemistry-1
+1,Common,Practical,Engineering Mechanics
+1,Common,Practical,Basic Electrical Engineering
+1,Common,Practical,Basic Workshop Practice-1
+2,Common,Theory,Mathematics -2
+2,Common,Theory,Physics -2
+2,Common,Theory,Chemistry-2
+2,Common,Theory,Engineering Graphics
+2,Common,Theory,C Programming
+2,Common,Theory,Professional Communication and Ethics-1
+2,Common,Practical,Physics-2
+2,Common,Practical,Chemistry-2
+2,Common,Practical,Engineering Graphics
+2,Common,Practical,C Programming
+2,Common,Practical,Professional Communication and Ethics-1
+2,Common,Practical,Basic Workshop Practice-2
+3,Computer,Theory,Mathematics-3
+3,Computer,Theory,Digital Logic Design an Analysis
+3,Computer,Theory,Discrete Mathematics
+3,Computer,Theory,Electronic Circuits and Communication Fundamentals
+3,Computer,Theory,Data Structures
+3,Computer,Practical,Digital System Lab
+3,Computer,Practical,Basic Electronics Lab
+3,Computer,Practical,Data Structures Lab
+3,Computer,Practical,OOPM(Java) Lab
+4,Computer,Theory,Mathematics-4
+4,Computer,Theory,Analysis of Algorithm
+4,Computer,Theory,Computer Organization and Architecture
+4,Computer,Theory,Operating System
+4,Computer,Theory,Computer Graphics
+4,Computer,Practical,Analysis of Algorithms Lab
+4,Computer,Practical,Computer Graphics Lab 
+4,Computer,Practical,Processor Architecture Lab
+4,Computer,Practical,Operating System Lab
+4,Computer,Practical,Open Source Tech Lab
+5,Computer,Theory,Microprocessor
+5,Computer,Theory,Database Management System
+5,Computer,Theory,Computer Network
+5,Computer,Theory,Theory of Computer Science
+5,Computer,Theory,Department Level Optional Course -I
+5,Computer,Practical,Microprocessor Lab
+5,Computer,Practical,Computer Network Lab
+5,Computer,Practical,Database & Info. System Lab
+5,Computer,Practical,Web Design Lab
+5,Computer,Practical,Business Comm. & Ethics
+6,Computer,Theory,Software Engineering
+6,Computer,Theory,System Programming & Complier Construction
+6,Computer,Theory,Data Warehousing & Mining
+6,Computer,Theory,Cryptography & System Security
+6,Computer,Theory,Department Level Optional Course -II
+6,Computer,Practical,Software Engineering Lab
+6,Computer,Practical,System software Lab
+6,Computer,Practical,Data Warehousing & Mining Lab
+6,Computer,Practical,System Security Lab
+7,Computer,Theory,Digital Signal & Image Processing
+7,Computer,Theory,Mobile Communication & Computing
+7,Computer,Theory,Artificial Intelligence & Soft Computing
+7,Computer,Theory,Department Level Optional Course -III
+7,Computer,Theory,Institute Level Optional Course-I
+7,Computer,Practical,Digital Signal & Image Processing Lab
+7,Computer,Practical,Mobile App. Development. Tech. Lab
+7,Computer,Practical,Artificial Intelligence & Soft Computing Lab
+7,Computer,Practical,Computational Lab-I
+8,Computer,Theory,Human Machine Interaction
+8,Computer,Theory,Distributed Computing
+8,Computer,Theory,Department Level Optional Course -IV
+8,Computer,Theory,Institute Level Optional Course-II
+8,Computer,Practical,Human Machine Interaction Lab
+8,Computer,Practical,Distributed Computing Lab
+8,Computer,Practical,Cloud Computing Lab
+8,Computer,Practical,Computational Lab-II
+3,Info. Tech,Theory,Applied Mathematics III
+3,Info. Tech,Theory,Logic Design
+3,Info. Tech,Theory,Data Structures & Analysis
+3,Info. Tech,Theory,Database Management System
+3,Info. Tech,Theory,Principle of Communications
+3,Info. Tech,Practical,Digital Design Lab
+3,Info. Tech,Practical,Data Structures Lab
+3,Info. Tech,Practical,SQL Lab
+3,Info. Tech,Practical,Java Programming Lab
+4,Info. Tech,Theory,Applied Mathematics-IV
+4,Info. Tech,Theory,Computer Networks
+4,Info. Tech,Theory,Operating Systems
+4,Info. Tech,Theory,Computer Organization and Architecture
+4,Info. Tech,Theory,Automata Theory
+4,Info. Tech,Practical,Networking Lab
+4,Info. Tech,Practical,Unix Lab
+4,Info. Tech,Practical,Microprocessor Programming Lab
+4,Info. Tech,Practical,Python Lab
+5,Info. Tech,Theory,Microcontroller and Embedded Programming
+5,Info. Tech,Theory,Internet Programming
+5,Info. Tech,Theory,Advanced Data Management Technology
+5,Info. Tech,Theory,Cryptography & Network Security
+5,Info. Tech,Theory,Department Level Optional Course-I
+5,Info. Tech,Practical,Internet Programming Lab
+5,Info. Tech,Practical,Security Lab
+5,Info. Tech,Practical,OLAP Lab
+5,Info. Tech,Practical,IOT (Mini Project) Lab
+5,Info. Tech,Practical,Business Communication and Ethics
+6,Info. Tech,Theory,Software Engineering with Project Management
+6,Info. Tech,Theory,Data Mining and Business Intelligence
+6,Info. Tech,Theory,Cloud Computing & Services
+6,Info. Tech,Theory,Wireless Networks
+6,Info. Tech,Theory,Department Level Optional Course -II
+6,Info. Tech,Practical,Software Design Lab
+6,Info. Tech,Practical,Business Intelligence Lab
+6,Info. Tech,Practical,Cloud Service Design Lab
+6,Info. Tech,Practical,Sensor Network Lab
+7,Info. Tech,Theory,Enterprise Network Design
+7,Info. Tech,Theory,Infrastructure Security
+7,Info. Tech,Theory,Artificial Intelligence
+7,Info. Tech,Theory,Department Level Optional Course -III
+7,Info. Tech,Theory,Institute Level Optional Course-I
+7,Info. Tech,Practical,Advanced Security Lab
+7,Info. Tech,Practical,Intelligence System Lab
+7,Info. Tech,Practical,Android Apps Development Lab
+7,Info. Tech,Practical,Network Design Lab
+8,Info. Tech,Theory,Big Data Analytics
+8,Info. Tech,Theory,Internet of Everything
+8,Info. Tech,Theory,Department Level Optional Course-IV
+8,Info. Tech,Theory,Institute Level Optional Course-II
+8,Info. Tech,Practical,Big Data Lab
+8,Info. Tech,Practical,Internet of Everything Lab
+8,Info. Tech,Practical,DevOps Lab
+8,Info. Tech,Practical,R Programming Lab
+3,Electronics,Theory,Applied Mathematics III
+3,Electronics,Theory,Electronic Devices and Circuits I
+3,Electronics,Theory,Digital Circuit Design
+3,Electronics,Theory,Electrical Network Analysis and Synthesis
+3,Electronics,Theory,Electronics Instruments and Measurement
+3,Electronics,Practical,Electronic Devices and Circuits I Laboratory
+3,Electronics,Practical,Digital Circuit Design Laboratory
+3,Electronics,Practical,Electrical Network and Measurement Laboratory
+3,Electronics,Practical,Object Oriented Programming Methodology Laboratory
+4,Electronics,Theory,Applied Mathematics IV
+4,Electronics,Theory,Electronic Devices and Circuits II
+4,Electronics,Theory,Microprocessors and Applications
+4,Electronics,Theory,Digital System Design
+4,Electronics,Theory,Principles of Communication Engineering
+4,Electronics,Theory,Linear Control Systems
+4,Electronics,Practical,Electronic Devices and Circuits II Laboratory
+4,Electronics,Practical,Microprocessors and Applications Laboratory
+4,Electronics,Practical,Digital System Design Laboratory
+4,Electronics,Practical,Principles of Communication Engineering Laboratory
+5,Electronics,Theory,Micro-controllers and Applications
+5,Electronics,Theory,Digital Communication
+5,Electronics,Theory,Engineering Electromagnetics
+5,Electronics,Theory,Design with Linear Integrated Circuits
+5,Electronics,Theory,Department Level optional courses I
+5,Electronics,Practical,Digital Communication Laboratory
+5,Electronics,Practical,Design with Linear Integrated Circuits Laboratory
+5,Electronics,Practical,Business Communication & Ethics
+5,Electronics,Practical,Department Level optional course-I Laboratory
+5,Electronics,Practical,Micro-controllers and Applications Laboratory
+6,Electronics,Theory,Embedded System and RTOS
+6,Electronics,Theory,Computer Communication Network
+6,Electronics,Theory,VLSI Design
+6,Electronics,Theory,Signals and systems
+6,Electronics,Theory,Department Level Optional courses II
+6,Electronics,Practical,Embedded System and RTOS Laboratory
+6,Electronics,Practical,Computer Communication Network Laboratory
+6,Electronics,Practical,VLSI Design Laboratory
+6,Electronics,Practical,Department Level Optional courses II Laboratory
+7,Electronics,Theory,Instrumentation System Design
+7,Electronics,Theory,Power Electronics
+7,Electronics,Theory,Digital signal processing
+7,Electronics,Theory,Department Level Optional course III
+7,Electronics,Theory,nstitute Level Optional Course I
+7,Electronics,Practical,Instrumentation System Design Laboratory
+7,Electronics,Practical,Power Electronics Laboratory
+7,Electronics,Practical,Digital signal processing Laboratory
+7,Electronics,Practical,Department Level Optional course III Laboratory
+8,Electronics,Theory,Internet of Things
+8,Electronics,Theory,Analog and Mixed VLSI Design
+8,Electronics,Theory,Department Level Optional course IV
+8,Electronics,Theory,Institute Level Optional course II
+8,Electronics,Practical,Internet of Things Laboratory
+8,Electronics,Practical,Analog and Mixed VLSI Design Laboratory
+8,Electronics,Practical,Department Level Optional Courses IV Laboratory
+3,Production,Theory,Applied Mathematics – III
+3,Production,Theory,Applied Thermodynamics
+3,Production,Theory,Manufacturing Engineering-I
+3,Production,Theory,Material Science and Engineering
+3,Production,Theory,Mechanics of Solids
+3,Production,Practical,Computer Aided Machine Drawing Laboratory
+3,Production,Practical,Data Base Information Retrieval Laboratory
+3,Production,Practical,Material Testing Laboratory
+3,Production,Practical,Manufacturing Process - I Laboratory
+4,Production,Theory,Applied Mathematics – IV
+4,Production,Theory,Dynamics of Machines
+4,Production,Theory,Manufacturing Engineering-II
+4,Production,Theory,Fluid & Thermal Engineering
+4,Production,Theory,Electrical & Electronics Engineering
+4,Production,Practical,Dynamics of Machines Laboratory
+4,Production,Practical,Fluid & Thermal Engineering Laboratory
+4,Production,Practical,Electrical & Electronics Engineering Laboratory
+4,Production,Practical,Manufacturing Process – II Laboratory
+5,Production,Theory,Design of Mold & Metal Forming Tools
+5,Production,Theory,Operations Research
+5,Production,Theory,Machine Design-I
+5,Production,Theory,CAD/CAM/CIM
+5,Production,Theory,Metrology & Quality Engineering
+5,Production,Theory,Department Level Optional Course I
+5,Production,Practical,Design of Mold & Metal Forming Tools Laboratory
+5,Production,Practical,Machine Design-I Laboratory
+5,Production,Practical,CAD/CAM/CIM Laboratory
+5,Production,Practical,Metrology & Quality Engg Laboratory
+5,Production,Practical,Business Communication & Ethics
+6,Production,Theory,Machining Science and Technology
+6,Production,Theory,Process Engineering and Tooling
+6,Production,Theory,Production Tooling
+6,Production,Theory,Machine Design – II
+6,Production,Theory,Production and Operation Management
+6,Production,Theory,Department Level Optional Course II
+6,Production,Practical,Machining Science and Technology Laboratory
+6,Production,Practical,Process Engineering and Tooling Laboratory
+6,Production,Practical,Production Tooling Laboratory
+6,Production,Practical,Machine Design-II Laboratory
+8,Production,Theory,Fluid Power & Automation
+8,Production,Theory,Industrial Engineering and Human Resource Management
+8,Production,Theory,"Economics, Finance, Accounting & Costing"
+8,Production,Theory,Department Level Optional Course III
+8,Production,Theory,Institute Level Optional courses
+8,Production,Practical,Fluid Power & Automation Laboratory
+8,Production,Practical,Industrial Engineering and Human Resource Management Laboratory
+8,Production,Practical,"Economics, Finance, Accounting & Costing Tutorial"
+3,Mechanical,Theory,Applied Mathematics III
+3,Mechanical,Theory,Thermodynamics
+3,Mechanical,Theory,Strength of Materials
+3,Mechanical,Theory,Production Process I
+3,Mechanical,Theory,Material Technology
+3,Mechanical,Practical,Computer Aided Machine Drawing
+3,Mechanical,Practical,Strength of Material
+3,Mechanical,Practical,Material Technology
+3,Mechanical,Practical,Machine Shop Practice I
+4,Mechanical,Theory,Applied Mathematics IV
+4,Mechanical,Theory,Fluid Mechanics
+4,Mechanical,Theory,Industrial Electronics
+4,Mechanical,Theory,Production Process II
+4,Mechanical,Theory,Kinematics of Machinery
+4,Mechanical,Practical,Data Base and Information Retrieval
+4,Mechanical,Practical,Fluid Mechanics
+4,Mechanical,Practical,Industrial Electronics
+4,Mechanical,Practical,Kinematics of Machinery
+4,Mechanical,Practical,Machine Shop Practice II
+5,Mechanical,Theory,Internal Combustion Engines
+5,Mechanical,Theory,Mechanical Measurements and Control
+5,Mechanical,Theory,Heat Transfer
+5,Mechanical,Theory,Dynamics of Machinery
+5,Mechanical,Theory,Department Level Optional Course I
+5,Mechanical,Practical,Internal Combustion Engines
+5,Mechanical,Practical,Mechanical Measurements and Control
+5,Mechanical,Practical,Heat Transfer
+5,Mechanical,Practical,Dynamics of Machinery
+5,Mechanical,Practical,Manufacturing Sciences Lab
+5,Mechanical,Practical,Business Communication and Ethics
+6,Mechanical,Theory,Metrology and Quality engineering
+6,Mechanical,Theory,Machine Design I
+6,Mechanical,Theory,Finite Element analysis
+6,Mechanical,Theory,Refrigeration and Air Conditioning
+6,Mechanical,Theory,Department Level Optional Course II
+6,Mechanical,Practical,Metrology and Quality Engineering
+6,Mechanical,Practical,Machine Design I
+6,Mechanical,Practical,Finite Element Analysis
+6,Mechanical,Practical,Refrigeration and Air Conditioning
+6,Mechanical,Practical,Mechatronics Lab
+7,Mechanical,Theory,Machine Design II
+7,Mechanical,Theory,CAD/CAM/CAE
+7,Mechanical,Theory,Production Planning and Control
+7,Mechanical,Theory,Department Level Optional Course III
+7,Mechanical,Theory,Institute Level Optional Course I
+7,Mechanical,Practical,Machine Design II
+7,Mechanical,Practical,CAD/CAM/CAE
+7,Mechanical,Practical,Production Planning and Control
+8,Mechanical,Theory,Design of Mechanical Systems
+8,Mechanical,Theory,Industrial Engineering and Management
+8,Mechanical,Theory,Power Engineering
+8,Mechanical,Theory,Department Level Optional Course IV
+8,Mechanical,Theory,Institute Level Optional Course II
+8,Mechanical,Practical,Design of Mechanical Systems
+8,Mechanical,Practical,Power Engineering
