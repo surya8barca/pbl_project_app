@@ -85,11 +85,11 @@ class _HomeState extends State<UserHome> {
     {
       if(widget.usertype=='Teacher')
       {
-        return TeacherHome();
+        return TeacherHome(userid: widget.userid);
       }
       else
       {
-        return StudentHome();
+        return StudentHome(userid: widget.userid);
       }
     }
     else

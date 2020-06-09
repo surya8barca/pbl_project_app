@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class TeacherHome extends StatefulWidget {
+  final String userid;
+  TeacherHome({this.userid});
 
   @override
   _HomeState createState() => _HomeState();
