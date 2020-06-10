@@ -946,6 +946,19 @@ class _HomeState extends State<Register> {
                           child: RaisedButton(
                             onPressed: () async {
                               if (name != null && rollno != null && dob!=null && branch!=null && sem!=null) {
+                                if(branch=='Production' && sem==7)
+                                {
+                                  Alert(
+                                        context: context,
+                                        title: 'Invalid Selection',
+                                        desc: '7th Semester for Prodction is just for Internship and hence is not eligible to use this appplication ',
+                                        buttons: [],
+                                        style: AlertStyle(
+                                            backgroundColor: Colors.cyan))
+                                    .show();
+                                }
+                                else
+                                {
                                 Alert(
                     context: context,
                     style: AlertStyle(
@@ -967,6 +980,7 @@ class _HomeState extends State<Register> {
                                 setState(() {
                                   imageform = true;
                                 });
+                                }
                                 }
                               } else {
                                 Alert(
