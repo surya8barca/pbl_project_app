@@ -7,10 +7,10 @@ import 'package:hive/hive.dart';
 import 'package:pbl_project_app/auth/login.dart';
 import 'package:pbl_project_app/loading.dart';
 import 'package:pbl_project_app/shared/background.dart';
+import 'package:pbl_project_app/user/teacher/takattendance.dart';
 import 'package:pbl_project_app/user/teacher/tprofile.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 
-import 'Attendance/takattendance.dart';
 
 class TeacherHome extends StatefulWidget {
   final String userid;
@@ -315,31 +315,6 @@ class _HomeState extends State<TeacherHome> {
                     elevation: 10,
                     child: Text(
                       'Show Defaulters\' List',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontSize: 30,
-                        color: Colors.blue,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
-                  SizedBox(height: 15,),
-                  RaisedButton(
-                        color: Colors.white,
-                    onPressed: () {
-                      //Navigator.push(context, MaterialPageRoute(builder: (context) => TProfile(imageurl: imageurl,userid: widget.userid,userdetails: userdetails,),));
-                    },
-                    padding: EdgeInsets.all(MediaQuery.of(context).size.width/20),
-                    shape: RoundedRectangleBorder(
-                      side: BorderSide(
-                        color: Colors.blue,
-                        width: 2,
-                      ),
-                      borderRadius: BorderRadius.circular(15),
-                    ),
-                    elevation: 10,
-                    child: Text(
-                      'Details of Particular Subject',
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         fontSize: 30,

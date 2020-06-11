@@ -167,17 +167,19 @@ class _HomeState extends State<Register> {
     }
 
   Future getcameraimage() async {
-    var image = await ImagePicker.pickImage(source: ImageSource.camera);
+    final picker = ImagePicker();
+    var image = await picker.getImage(source: ImageSource.camera);
     setState(() {
-      idPhoto = image;
+      idPhoto = File(image.path);
       imagestatus = 'View/Edit your picture  ';
     });
   }
 
   Future getgalleryimage() async {
-    var image = await ImagePicker.pickImage(source: ImageSource.gallery);
+    final picker = ImagePicker();
+    var image = await picker.getImage(source: ImageSource.gallery);
     setState(() {
-      idPhoto = image;
+      idPhoto = File(image.path);
       imagestatus = 'View/Edit your picture  ';
     });
   }
