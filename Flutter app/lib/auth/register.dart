@@ -34,8 +34,6 @@ class _HomeState extends State<Register> {
       imageform = false;
   List user = ['Teacher', 'Student'];
   List branches=['Computer','Info. Tech','Electronics','Production','Mechanical','Electronics & Computer Science'];
-  List<Map> practicalSubjects=[];
-  List<Map> theorySubjects=[];
 
   final CollectionReference teachers= Firestore.instance.collection('Teachers');
   final CollectionReference students= Firestore.instance.collection('Students');
@@ -92,25 +90,30 @@ class _HomeState extends State<Register> {
       Map subjects = jsonDecode(data.body);
       List pracs=subjects['Practical Subjects'];
       List theory = subjects['Theory Subjects'];
+      
+      final CollectionReference practicaldata= Firestore.instance.collection('Practical_Subjects_$userID');
+      final CollectionReference theorydata= Firestore.instance.collection('Theory_Subjects_$userID');
       for(int i=0;i<pracs.length;i++)
       {
-        Map data = {
-          "Subject_name":pracs[i],
-          "total_lectures":0,
-          "lectures_attended":0,
-          "subject_attendance":0.00,
-        };
-        practicalSubjects.add(data);
+        await practicaldata.document(pracs[i]).setData(
+          {
+            'Subject_Name':pracs[i],
+            'Subject_Attendance':0.00,
+            'Total_Lectures':0,
+            'Lectures_Attended':0,
+          }
+        );
       }
       for(int i=0;i<theory.length;i++)
       {
-        Map data = {
-          "Subject_name":theory[i],
-          "total_lectures":0,
-          "lectures_attended":0,
-          "subject_attendance":0.00,
-        };
-        theorySubjects.add(data);
+        await theorydata.document(theory[i]).setData(
+          {
+            'Subject_Name':theory[i],
+            'Subject_Attendance':0.00,
+            'Total_Lectures':0,
+            'Lectures_Attended':0,
+          }
+        );
       }
      
     }
@@ -131,8 +134,7 @@ class _HomeState extends State<Register> {
         'date_of_birth':dob,
         'branch':branch,
         'user_type':userType,
-        'Theory_Subjects':theorySubjects,
-        'Practical_Subjects':practicalSubjects,
+        'total_attendance':0.00,
       });
       return true;
     }

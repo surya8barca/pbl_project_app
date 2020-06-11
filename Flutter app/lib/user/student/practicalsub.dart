@@ -20,7 +20,7 @@ class _HomeState extends State<PracticalSubjects> {
   //variables
   String userid;
   final userbox= Hive.box('currentuser');
-  List practicalsubjects;
+  List practicalSubjects;
 
   //functions
   Future<void> getuserid() async{
@@ -41,9 +41,10 @@ class _HomeState extends State<PracticalSubjects> {
   Future<void> getdetails() async{
     await getuserid();
     try{
-      DocumentSnapshot data = await Firestore.instance.collection('Students').document(userid).get(); 
+      final CollectionReference practicaldata= Firestore.instance.collection('Practical_Subjects_$userid');
+      QuerySnapshot practicalsubjects=await practicaldata.getDocuments();
       setState(() {
-        practicalsubjects=data.data['Practical_Subjects'];
+        practicalSubjects=practicalsubjects.documents;
       });
     }
     catch(e)
@@ -70,7 +71,7 @@ class _HomeState extends State<PracticalSubjects> {
   }
   @override
   Widget build(BuildContext context) {
-    if(practicalsubjects==null)
+    if(practicalSubjects==null)
     {
       return PageLoading();
     }
@@ -108,7 +109,7 @@ class _HomeState extends State<PracticalSubjects> {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  for(int i=0;i<practicalsubjects.length;i++)
+                  for(int i=0;i<practicalSubjects.length;i++)
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -128,7 +129,7 @@ class _HomeState extends State<PracticalSubjects> {
                                     children: [
                                       Center(
                                         child: Text(
-                                          practicalsubjects[i]['Subject_name'],
+                                          practicalSubjects[i].data['Subject_Name'],
                                           textAlign: TextAlign.center,
                                           style: TextStyle(
                                             color: Colors.blue,
@@ -141,7 +142,7 @@ class _HomeState extends State<PracticalSubjects> {
                                         height: 10,
                                       ),
                                       Text(
-                                        'Total Lectures: ${practicalsubjects[i]['total_lectures'].toString()}',
+                                        'Total Lectures: ${practicalSubjects[i].data['Total_Lectures'].toString()}',
                                         style: TextStyle(
                                           fontWeight: FontWeight.bold,
                                           fontSize: 20,
@@ -151,7 +152,7 @@ class _HomeState extends State<PracticalSubjects> {
                                         height: 5,
                                       ),
                                       Text(
-                                        'Lectures Attended: ${practicalsubjects[i]['lectures_attended'].toString()}',
+                                        'Lectures Attended: ${practicalSubjects[i].data['Lectures_Attended'].toString()}',
                                         style: TextStyle(
                                           fontWeight: FontWeight.bold,
                                           fontSize: 20,
@@ -176,7 +177,7 @@ class _HomeState extends State<PracticalSubjects> {
                                       ),
                                       Center(
                                         child: Text(
-                                          '${practicalsubjects[i]['subject_attendance'].toStringAsPrecision(3)} %',
+                                          '${practicalSubjects[i].data['Subject_Attendance'].toStringAsPrecision(3)} %',
                                           textAlign: TextAlign.center,
                                           style: TextStyle(
                                             color: Colors.orange,

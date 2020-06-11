@@ -41,9 +41,10 @@ class _HomeState extends State<TheorySubjects> {
   Future<void> getdetails() async{
     await getuserid();
     try{
-      DocumentSnapshot data = await Firestore.instance.collection('Students').document(userid).get(); 
+      final CollectionReference theorydata= Firestore.instance.collection('Theory_Subjects_$userid');
+      QuerySnapshot theorySubjects=await theorydata.getDocuments();
       setState(() {
-        theorysubjects=data.data['Theory_Subjects'];
+        theorysubjects=theorySubjects.documents;
       });
     }
     catch(e)
@@ -129,7 +130,7 @@ class _HomeState extends State<TheorySubjects> {
                                     children: [
                                       Center(
                                         child: Text(
-                                          theorysubjects[i]['Subject_name'],
+                                          theorysubjects[i].data['Subject_Name'],
                                           textAlign: TextAlign.center,
                                           style: TextStyle(
                                             color: Colors.blue,
@@ -142,7 +143,7 @@ class _HomeState extends State<TheorySubjects> {
                                         height: 10,
                                       ),
                                       Text(
-                                        'Total Lectures: ${theorysubjects[i]['total_lectures'].toString()}',
+                                        'Total Lectures: ${theorysubjects[i].data['Total_Lectures'].toString()}',
                                         style: TextStyle(
                                           fontWeight: FontWeight.bold,
                                           fontSize: 20,
@@ -152,7 +153,7 @@ class _HomeState extends State<TheorySubjects> {
                                         height: 5,
                                       ),
                                       Text(
-                                        'Lectures Attended: ${theorysubjects[i]['lectures_attended'].toString()}',
+                                        'Lectures Attended: ${theorysubjects[i].data['Lectures_Attended'].toString()}',
                                         style: TextStyle(
                                           fontWeight: FontWeight.bold,
                                           fontSize: 20,
@@ -177,7 +178,7 @@ class _HomeState extends State<TheorySubjects> {
                                       ),
                                       Center(
                                         child: Text(
-                                          '${theorysubjects[i]['subject_attendance'].toStringAsPrecision(3)} %',
+                                          '${theorysubjects[i].data['Subject_Attendance'].toStringAsPrecision(3)} %',
                                           textAlign: TextAlign.center,
                                           style: TextStyle(
                                             color: Colors.orange,

@@ -44,30 +44,35 @@ class _HomeState extends State<Status> {
   }
 
   Future<void> getattendance()async{
-    List theory=userdetails['Theory_Subjects'];
-    List pracs=userdetails['Practical_Subjects'];
-    double totalTheory=0.00;
-    double totalPracs=0.00;
-    for(int i=0;i<theory.length;i++)
-    {
-      totalTheory=totalTheory+theory[i]['subject_attendance'];
+    try{
+      final CollectionReference practicaldata= Firestore.instance.collection('Practical_Subjects_$userid');
+      final CollectionReference theorydata= Firestore.instance.collection('Theory_Subjects_$userid');
+      QuerySnapshot practicalsubjects=await practicaldata.getDocuments();
+      QuerySnapshot theorysubjects=await theorydata.getDocuments();
+      double sum1=0.00;
+      double sum2=0.00;
+
+      for(int i=0;i<practicalsubjects.documents.length;i++)
+      {
+        sum1=sum1+practicalsubjects.documents[i].data['Subject_Attendance'];
+      }
+      for(int i=0;i<theorysubjects.documents.length;i++)
+      {
+        sum2=sum2+theorysubjects.documents[i].data['Subject_Attendance'];
+      }
+      setState(() {
+        practicalattendance=sum1;
+        theoryattendance=sum2;
+      });
+
     }
-    setState(() {
-      theoryattendance=totalTheory/theory.length;
-    });
-    for(int i=0;i<pracs.length;i++)
+    catch(e)
     {
-      totalPracs=totalPracs+theory[i]['subject_attendance'];
+      print(e.message);
     }
-    setState(() {
-      practicalattendance=totalPracs/theory.length;
-    });
-    setState(() {
-      totalattendance=(practicalattendance + theoryattendance)/2;
-    });
   }
   Future<void> getcolor()async{
-    if(totalattendance<75.00)
+    if(userdetails['total_attendance']<75.00)
     {
       setState(() {
         alert='Attendance less than required';
@@ -78,12 +83,13 @@ class _HomeState extends State<Status> {
 
   Future<void> getdetails() async{
     await getuserid();
+    await getattendance();
     try{
       DocumentSnapshot data = await Firestore.instance.collection('Students').document(userid).get();
       setState(() {
         userdetails=data.data;
       });
-    await getattendance();
+    
     await getcolor();
     }
     catch(e)
@@ -176,7 +182,7 @@ class _HomeState extends State<Status> {
               ),
               Center(
                 child: Text(
-                  '${totalattendance.toStringAsPrecision(3)} %',
+                  '${userdetails['total_attendance'].toStringAsPrecision(3)} %',
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     color: attendance,

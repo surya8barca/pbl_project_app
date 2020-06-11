@@ -20,7 +20,7 @@ class _HomeState extends State<TakeAttendance> {
   File attendancepicture;
   String semesterValue,subjecttype,subject,branch;
   String imagestatus = 'Upload your picture';
-  List presentstudents=[8320,8321,8367];//result after sending picture
+  List presentstudents=[8321,8367];//result after sending picture
   List semesters=['1','2','3','4','5','6','7','8'];
   List branches=['Computer','Info. Tech','Electronics','Production','Mechanical','Electronics & Computer Science'];
   List subjecttypes=['Practical','Theory'];
