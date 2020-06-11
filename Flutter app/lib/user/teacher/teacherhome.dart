@@ -10,6 +10,8 @@ import 'package:pbl_project_app/shared/background.dart';
 import 'package:pbl_project_app/user/teacher/tprofile.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 
+import 'Attendance/takattendance.dart';
+
 class TeacherHome extends StatefulWidget {
   final String userid;
   TeacherHome({this.userid});
@@ -275,7 +277,7 @@ class _HomeState extends State<TeacherHome> {
                       RaisedButton(
                         color: Colors.white,
                     onPressed: () {
-                      //Navigator.push(context, MaterialPageRoute(builder: (context) => TProfile(imageurl: imageurl,userid: widget.userid,userdetails: userdetails,),));
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => TakeAttendance(),));
                     },
                     padding: EdgeInsets.all(MediaQuery.of(context).size.width/20),
                     shape: RoundedRectangleBorder(
@@ -363,31 +365,6 @@ class _HomeState extends State<TeacherHome> {
                     elevation: 10,
                     child: Text(
                       'Data of Particular Student',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontSize: 30,
-                        color: Colors.blue,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
-                  SizedBox(height: 15,),
-                  RaisedButton(
-                        color: Colors.white,
-                    onPressed: () {
-                      //Navigator.push(context, MaterialPageRoute(builder: (context) => TProfile(imageurl: imageurl,userid: widget.userid,userdetails: userdetails,),));
-                    },
-                    padding: EdgeInsets.all(MediaQuery.of(context).size.width/20),
-                    shape: RoundedRectangleBorder(
-                      side: BorderSide(
-                        color: Colors.blue,
-                        width: 2,
-                      ),
-                      borderRadius: BorderRadius.circular(15),
-                    ),
-                    elevation: 10,
-                    child: Text(
-                      'Send Feedback Form',
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         fontSize: 30,

@@ -49,7 +49,6 @@ class _HomeState extends State<Status> {
     double totalPracs=0.00;
     for(int i=0;i<theory.length;i++)
     {
-      print(theory[i]['subject_attendance']);
       totalTheory=totalTheory+theory[i]['subject_attendance'];
     }
     setState(() {
