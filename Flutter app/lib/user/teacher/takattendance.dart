@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:io';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:http/http.dart';
@@ -25,6 +26,7 @@ class _HomeState extends State<TakeAttendance> {
   List subjecttypes=['Practical','Theory'];
   List subjects=[];
 
+  final CollectionReference students= Firestore.instance.collection('Students');
 
   //functions
   Future<void> getsubjects() async{
@@ -77,6 +79,7 @@ class _HomeState extends State<TakeAttendance> {
       imagestatus = 'View/Edit your picture  ';
     });
   }
+
 
   @override
   Widget build(BuildContext context) {

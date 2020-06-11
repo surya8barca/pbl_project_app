@@ -22,6 +22,7 @@ class _HomeState extends State<Status> {
   Map userdetails;
   double theoryattendance;
   double practicalattendance;
+  double totalattendance;
   Color attendance=Colors.green;
   String alert='';
 
@@ -61,9 +62,12 @@ class _HomeState extends State<Status> {
     setState(() {
       practicalattendance=totalPracs/theory.length;
     });
+    setState(() {
+      totalattendance=(practicalattendance + theoryattendance)/2;
+    });
   }
   Future<void> getcolor()async{
-    if(userdetails["total_attendance"]<75.00)
+    if(totalattendance<75.00)
     {
       setState(() {
         alert='Attendance less than required';
@@ -75,7 +79,7 @@ class _HomeState extends State<Status> {
   Future<void> getdetails() async{
     await getuserid();
     try{
-      DocumentSnapshot data = await Firestore.instance.collection('Students').document(userid).get(); 
+      DocumentSnapshot data = await Firestore.instance.collection('Students').document(userid).get();
       setState(() {
         userdetails=data.data;
       });
@@ -172,7 +176,7 @@ class _HomeState extends State<Status> {
               ),
               Center(
                 child: Text(
-                  '${userdetails["total_attendance"].toStringAsPrecision(3)} %',
+                  '${totalattendance.toStringAsPrecision(3)} %',
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     color: attendance,

@@ -131,7 +131,6 @@ class _HomeState extends State<Register> {
         'date_of_birth':dob,
         'branch':branch,
         'user_type':userType,
-        'total_attendance':0.00,
         'Theory_Subjects':theorySubjects,
         'Practical_Subjects':practicalSubjects,
       });
