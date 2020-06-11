@@ -80,6 +80,47 @@ class _HomeState extends State<TakeAttendance> {
     });
   }
 
+  Future<void> addlecture()async{
+    try{
+      QuerySnapshot data=await students.getDocuments();
+      List allstudents = data.documents;
+      for(int i=0;i<allstudents.length;i++)
+      {
+        if(allstudents[i].data['semester']==sem && allstudents[i].data['branch']==branch)
+        {
+          String id= allstudents[i].documentID;
+          if(subjecttype=='Practical')
+          {
+            final CollectionReference practical= Firestore.instance.collection('Practical_Subjects_$id');
+            QuerySnapshot practicaldata = await practical.getDocuments();
+            List practicalSubjects = practicaldata.documents;
+            for(int j=0;j<practicalSubjects.length;j++)
+            {
+              if(practicalSubjects[j].data['Subject_Name']==subject)
+              {
+                await practical.document(subject).updateData({
+                  'Total_Lectures':(practicalSubjects[j].data['Total_Lectures']+1),
+                });
+              }
+            }
+          }
+        }
+      }
+    }
+    catch(e)
+    {
+      Navigator.pop(context);
+      Alert(
+          context: context,
+          title: 'Database Error',
+          desc: 'Please try Again',
+          buttons: []).show();
+          await Future.delayed(Duration(seconds: 2));
+          Navigator.pop(context);
+          Navigator.pop(context);
+    }
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -180,6 +221,7 @@ class _HomeState extends State<TakeAttendance> {
                       child: SpinKitCircle(color: Colors.blue),
                     )
                   ).show();
+                  //await updateattendance();
                     await Future.delayed(Duration(seconds: 5));
                     Navigator.pop(context);
                     Alert(
@@ -982,7 +1024,7 @@ class _HomeState extends State<TakeAttendance> {
                       child: SpinKitCircle(color: Colors.blue),
                     )
                   ).show();
-                  await Future.delayed(Duration(seconds: 5));
+                  await addlecture();
                   Navigator.pop(context);
                   Alert(
                     context: context,
