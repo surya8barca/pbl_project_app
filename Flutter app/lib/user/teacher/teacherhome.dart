@@ -7,6 +7,7 @@ import 'package:hive/hive.dart';
 import 'package:pbl_project_app/auth/login.dart';
 import 'package:pbl_project_app/loading.dart';
 import 'package:pbl_project_app/shared/background.dart';
+import 'package:pbl_project_app/user/teacher/defaulters.dart';
 import 'package:pbl_project_app/user/teacher/takattendance.dart';
 import 'package:pbl_project_app/user/teacher/tprofile.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
@@ -302,8 +303,8 @@ class _HomeState extends State<TeacherHome> {
                   RaisedButton(
                         color: Colors.white,
                     onPressed: () {
-                      //Navigator.push(context, MaterialPageRoute(builder: (context) => TProfile(imageurl: imageurl,userid: widget.userid,userdetails: userdetails,),));
-                    },
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => Defaulter(),));
+                      },
                     padding: EdgeInsets.all(MediaQuery.of(context).size.width/20),
                     shape: RoundedRectangleBorder(
                       side: BorderSide(
