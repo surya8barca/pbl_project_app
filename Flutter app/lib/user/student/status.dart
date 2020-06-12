@@ -61,8 +61,8 @@ class _HomeState extends State<Status> {
         sum2=sum2+theorysubjects.documents[i].data['Subject_Attendance'];
       }
       setState(() {
-        practicalattendance=sum1;
-        theoryattendance=sum2;
+        practicalattendance=sum1/practicalsubjects.documents.length;
+        theoryattendance=sum2/theorysubjects.documents.length;
       });
 
     }

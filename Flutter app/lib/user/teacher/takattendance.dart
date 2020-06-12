@@ -20,7 +20,7 @@ class _HomeState extends State<TakeAttendance> {
   File attendancepicture;
   String semesterValue,subjecttype,subject,branch;
   String imagestatus = 'Upload your picture';
-  List presentstudents=[8321,8367];//result after sending picture
+  List presentstudents=[8321,8367];//result after sending picture..actucal list of present students updated from backend
   List semesters=['1','2','3','4','5','6','7','8'];
   List branches=['Computer','Info. Tech','Electronics','Production','Mechanical','Electronics & Computer Science'];
   List subjecttypes=['Practical','Theory'];
@@ -104,8 +104,24 @@ class _HomeState extends State<TakeAttendance> {
               }
             }
           }
+          else
+          {
+            final CollectionReference theory= Firestore.instance.collection('Theory_Subjects_$id');
+            QuerySnapshot theorydata = await theory.getDocuments();
+            List theorySubjects = theorydata.documents;
+            for(int j=0;j<theorySubjects.length;j++)
+            {
+              if(theorySubjects[j].data['Subject_Name']==subject)
+              {
+                await theory.document(subject).updateData({
+                  'Total_Lectures':(theorySubjects[j].data['Total_Lectures']+1),
+                });
+              }
+            }
+          }
         }
       }
+      
     }
     catch(e)
     {
@@ -120,7 +136,148 @@ class _HomeState extends State<TakeAttendance> {
           Navigator.pop(context);
     }
   }
+  Future<void> updatemainattendance(List allstudents)async{
+    try{
+      for(int i=0;i<allstudents.length;i++)
+      {
+       if(allstudents[i].data['semester']==sem && allstudents[i].data['branch']==branch)
+       {
+      String id= allstudents[i].documentID;
+      final CollectionReference practicaldata= Firestore.instance.collection('Practical_Subjects_$id');
+      final CollectionReference theorydata= Firestore.instance.collection('Theory_Subjects_$id');
+      QuerySnapshot practicalsubjects=await practicaldata.getDocuments();
+      QuerySnapshot theorysubjects=await theorydata.getDocuments();
+      double sum1=0.00;
+      double sum2=0.00;
 
+      for(int i=0;i<practicalsubjects.documents.length;i++)
+      {
+        sum1=sum1+practicalsubjects.documents[i].data['Subject_Attendance'];
+      }
+      double pracsA=sum1/practicalsubjects.documents.length;
+      for(int i=0;i<theorysubjects.documents.length;i++)
+      {
+        sum2=sum2+theorysubjects.documents[i].data['Subject_Attendance'];
+      }
+      double theoryA=sum2/theorysubjects.documents.length;
+      double totalA=((pracsA+theoryA)/2);
+      await students.document(id).updateData(
+        {
+          'total_attendance':totalA,
+        }
+      );
+
+       }
+      }
+    }
+    catch(e)
+    {
+      print(e.message);
+    }
+  }
+  Future<void> updatetotalsubjectattendance(List allstudents)async{
+    try{
+      for(int i=0;i<allstudents.length;i++)
+      {
+       if(allstudents[i].data['semester']==sem && allstudents[i].data['branch']==branch)
+       {
+         String id= allstudents[i].documentID;
+          if(subjecttype=='Practical')
+          {
+            final CollectionReference practical= Firestore.instance.collection('Practical_Subjects_$id');
+            QuerySnapshot practicaldata = await practical.getDocuments();
+            List practicalSubjects = practicaldata.documents;
+            for(int j=0;j<practicalSubjects.length;j++)
+            {
+              if(practicalSubjects[j].data['Subject_Name']==subject)
+              {
+                await practical.document(subject).updateData({
+                  'Subject_Attendance':(((practicalSubjects[j].data['Lectures_Attended'])/(practicalSubjects[j].data['Total_Lectures']))*100),
+                });
+              }
+            }
+          }
+          else
+          {
+            final CollectionReference theory= Firestore.instance.collection('Theory_Subjects_$id');
+            QuerySnapshot theorydata = await theory.getDocuments();
+            List theorySubjects = theorydata.documents;
+            for(int j=0;j<theorySubjects.length;j++)
+            {
+              if(theorySubjects[j].data['Subject_Name']==subject)
+              {
+                await theory.document(subject).updateData({
+                  'Subject_Attendance':(((theorySubjects[j].data['Lectures_Attended'])/(theorySubjects[j].data['Total_Lectures']))*100),
+                });
+              }
+            }
+          }
+       }
+      }
+    }
+    catch(e)
+    {
+      print(e.message);
+    }
+  }
+  Future<void> updateattendance() async{
+    try
+    {
+      QuerySnapshot data=await students.getDocuments();
+      List allstudents = data.documents;
+      for(int i=0;i<allstudents.length;i++)
+      {
+        if(presentstudents.any((element) => allstudents[i].data['rollno']==element))
+        {
+          String id=allstudents[i].documentID;
+          if(subjecttype=='Practical')
+          {
+            final CollectionReference practical= Firestore.instance.collection('Practical_Subjects_$id');
+            QuerySnapshot practicaldata = await practical.getDocuments();
+            List practicalSubjects = practicaldata.documents;
+            for(int j=0;j<practicalSubjects.length;j++)
+            {
+              if(practicalSubjects[j].data['Subject_Name']==subject)
+              {
+                await practical.document(subject).updateData({
+                  'Lectures_Attended':(practicalSubjects[j].data['Lectures_Attended']+1),
+                });
+              }
+            }
+          }
+          else
+          {
+            final CollectionReference theory= Firestore.instance.collection('Theory_Subjects_$id');
+            QuerySnapshot theorydata = await theory.getDocuments();
+            List theorySubjects = theorydata.documents;
+            for(int j=0;j<theorySubjects.length;j++)
+            {
+              if(theorySubjects[j].data['Subject_Name']==subject)
+              {
+                await theory.document(subject).updateData({
+                  'Lectures_Attended':(theorySubjects[j].data['Lectures_Attended']+1),
+                });
+              }
+            }
+          }
+        }
+      }
+    await updatetotalsubjectattendance(allstudents);
+    await updatemainattendance(allstudents);
+    }
+    catch(e)
+    {
+      Navigator.pop(context);
+      Alert(
+          context: context,
+          title: 'Database Error',
+          desc: 'Please try Again',
+          buttons: []).show();
+          await Future.delayed(Duration(seconds: 2));
+          Navigator.pop(context);
+          Navigator.pop(context);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -221,8 +378,7 @@ class _HomeState extends State<TakeAttendance> {
                       child: SpinKitCircle(color: Colors.blue),
                     )
                   ).show();
-                  //await updateattendance();
-                    await Future.delayed(Duration(seconds: 5));
+                  await updateattendance();
                     Navigator.pop(context);
                     Alert(
                     context: context,
@@ -1038,6 +1194,7 @@ class _HomeState extends State<TakeAttendance> {
                       child: SpinKitCircle(color: Colors.blue),
                     )
                   ).show();
+                  //getting list of roll numbers present from backend
                   await Future.delayed(Duration(seconds: 5));
                   Navigator.pop(context);
                   setState(() {
