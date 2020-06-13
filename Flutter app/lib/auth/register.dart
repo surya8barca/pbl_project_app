@@ -1376,7 +1376,7 @@ class _HomeState extends State<Register> {
                                 ),
                               ),
                             ),
-                          ),
+      ),
                           ButtonTheme(
                             shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
                             buttonColor: Colors.black,
